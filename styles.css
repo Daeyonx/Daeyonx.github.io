@@ -187,3 +187,121 @@ body {
 input[type=file] {
     font-size: 14px
 }
+
+/* Decorations */
+.decorations {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: auto
+}
+
+.decor {
+    cursor: pointer;
+    transform-origin: center;
+    transition: transform .28s ease
+}
+
+.decor:hover {
+    transform: translateY(-6px) scale(1.06)
+}
+
+.decor.heart.pop {
+    animation: heart-pop .9s forwards
+}
+
+@keyframes heart-pop {
+    0% {
+        transform: scale(1)
+    }
+
+    20% {
+        transform: scale(1.35)
+    }
+
+    40% {
+        transform: scale(.95)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+/* Cute bear positioning + animation */
+.cute-bear {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 120;
+    pointer-events: none
+}
+
+.cute-bear svg {
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .08))
+}
+
+.cute-bear .bear-body {
+    transform-origin: center;
+    animation: bear-bob 3s ease-in-out infinite
+}
+
+@keyframes bear-bob {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-6px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+/* arm thumbs-up animation */
+.cute-bear .arm {
+    transform-origin: 8px 18px;
+    animation: thumbs 3s ease-in-out infinite
+}
+
+@keyframes thumbs {
+    0% {
+        transform: rotate(0)
+    }
+
+    20% {
+        transform: rotate(-18deg)
+    }
+
+    40% {
+        transform: rotate(6deg)
+    }
+
+    60% {
+        transform: rotate(-10deg)
+    }
+
+    100% {
+        transform: rotate(0)
+    }
+}
+
+/* mouth smile pulse */
+.cute-bear .bear-mouth {
+    transition: stroke-width .2s ease
+}
+
+.cute-bear:hover .bear-mouth {
+    stroke-width: 3
+}
+
+/* small responsive tweak for mascot on tiny screens */
+@media(max-width:420px) {
+    .cute-bear {
+        right: 8px;
+        bottom: 8px;
+        transform: scale(.85)
+    }
+}
