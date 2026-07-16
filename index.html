@@ -1,256 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body>
-  <div class="page">
-    <div class="frame-decor" aria-hidden="true">
-      <svg class="corner tl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 80 C30 40 70 40 90 10" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-      <svg class="corner tr" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 80 C30 40 70 40 90 10" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-      <svg class="corner bl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 80 C30 40 70 40 90 10" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-      <svg class="corner br" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 80 C30 40 70 40 90 10" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-    </div>
-    <header class="site-header">
-      <h1 class="site-title">Your Name</h1>
-      <p class="tagline">Short tagline or profession</p>
-      <!-- decorative icons -->
-      <div class="decorations" aria-hidden="true">
-        <!-- simple flower -->
-        <svg class="decor flower" width="48" height="48" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 7a2 2 0 100-4 2 2 0 000 4z" fill="#fff" stroke="#222" stroke-width=".5" />
-          <path d="M12 12s3-1 4-3 2-1 3 0 1 3 0 4-3 1-4 3-2 1-3 0-1-3 0-4z" fill="#ffdede" opacity=".9" />
-          <circle cx="12" cy="12" r="1.2" fill="#222" />
-        </svg>
-        <!-- heart -->
-        <svg class="decor heart" width="36" height="36" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 20s-7-4.35-9-7.5C-1 7 5 3 7 6c1 2 2 2 5 5 3-3 4-3 5-5 2-3 8-1 4.5 6.5C19 15.65 12 20 12 20z"
-            fill="#fff" stroke="#222" stroke-width=".5" />
-        </svg>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Your Cute Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site">
+      <!-- decorative frame corners -->
+      <div class="frame-decor" aria-hidden="true">
+        <svg class="corner tl" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M8 100 C38 60 82 60 112 8" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+        <svg class="corner tr" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M8 100 C38 60 82 60 112 8" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+        <svg class="corner bl" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M8 100 C38 60 82 60 112 8" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+        <svg class="corner br" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M8 100 C38 60 82 60 112 8" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
       </div>
-    </header>
-    // enable drag-and-drop for picture slots and avatar
-    function preventDefaults(e){e.preventDefault();e.stopPropagation();}
-    function highlight(slot){slot.classList.add('dragover')}
-    function unhighlight(slot){slot.classList.remove('dragover')}
 
-    document.querySelectorAll('.pic-slot').forEach(slot => {
-    ['dragenter','dragover','dragleave','drop'].forEach(evt => slot.addEventListener(evt, preventDefaults));
-    ['dragenter','dragover'].forEach(evt => slot.addEventListener(evt, ()=>highlight(slot)));
-    ['dragleave','drop'].forEach(evt => slot.addEventListener(evt, ()=>unhighlight(slot)));
-    slot.addEventListener('drop', e=>{
-    const dt = e.dataTransfer; const file = dt.files && dt.files[0];
-    const input = slot.querySelector('.pic-input');
-    const preview = slot.querySelector('.pic-preview');
-    if (file && file.type.startsWith('image/')){
-    // set the file to the input (for accessibility) using DataTransfer if available
-    try{ const dataTransfer = new DataTransfer(); dataTransfer.items.add(file); input.files =
-    dataTransfer.files;}catch(err){}
-    readAndPreview(file, preview);
-    }
-    });
-    // keyboard: press Enter/Space to open file picker
-    slot.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' ') slot.querySelector('.pic-input').click();
-    });
-    });
-
-    // avatar drag/drop
-    const avatarDrop = document.querySelector('.image-drop');
-    if(avatarDrop){['dragenter','dragover','dragleave','drop'].forEach(evt=>avatarDrop.addEventListener(evt,preventDefaults));
-    ['dragenter','dragover'].forEach(evt=>avatarDrop.addEventListener(evt,()=>avatarDrop.classList.add('dragover')));
-    ['dragleave','drop'].forEach(evt=>avatarDrop.addEventListener(evt,()=>avatarDrop.classList.remove('dragover')));
-    avatarDrop.addEventListener('drop', e=>{ const f = e.dataTransfer.files[0]; const input =
-    avatarDrop.querySelector('.image-input'); const preview = document.querySelector('.avatar-preview'); if(f &&
-    f.type.startsWith('image/')){try{ const dt=new DataTransfer(); dt.items.add(f); input.files=dt.files;}catch(err){}
-    readAndPreview(f, preview);} });
-
-    // small floating hearts for click feedback
-    document.querySelectorAll('.decor.heart').forEach(h => { h.addEventListener('click', () => {
-    h.classList.toggle('pop'); }); });
-    <div class="profile-card">
-      <div class="profile-image" role="img" aria-label="profile image"></div>
-
-      <div><strong>2</strong><span>Albums</span></div>
-      <div><strong>12</strong><span>Projects</span></div>
-      <div><strong>10k</strong><span>Plays</span></div>
-    </div>
-  </div>
-  </div>
-  </div>
-  </section>
-
-  <!-- Showcase section with overlapping photos -->
-  <section class="showcase card">
-    <div class="polaroids">
-      <div class="polaroid one">
-        <img src="" alt="photo 1" />
-      </div>
-      <div class="polaroid two">
-        <img src="" alt="photo 2" />
-      </div>
-    </div>
-    <div style="margin-top:16px">
-      <h2>Damn Right</h2>
-      <p class="muted">A short paragraph describing this featured showcase or latest release. Replace with your own
-        words.</p>
-    </div>
-  </section>
-
-  <main class="layout">
-    <section class="bio card">
-      <h2>Bio</h2>
-      <p class="bio-text">Write a short bio about yourself here. This is a place to introduce who you are, what you
-        do, and what you're passionate about.</p>
-      <div class="avatar-placeholder">
-        <label class="image-drop">
-          <span>Drop or select a profile image</span>
-          <input type="file" accept="image/*" class="image-input" />
-        </label>
-        <div class="avatar-preview" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <section class="gallery card">
-      <h2>Pictures</h2>
-      <p class="muted">Add photos or artwork here.</p>
-      <div class="pictures-grid" id="picturesGrid">
-        <label class="pic-slot" tabindex="0">
-          <input type="file" accept="image/*" class="pic-input" />
-          <div class="pic-preview"></div>
-        </label>
-        <label class="pic-slot" tabindex="0">
-          <input type="file" accept="image/*" class="pic-input" />
-          <div class="pic-preview"></div>
-        </label>
-        <label class="pic-slot" tabindex="0">
-          <input type="file" accept="image/*" class="pic-input" />
-          <div class="pic-preview"></div>
-        </label>
-        <label class="pic-slot" tabindex="0">
-          <input type="file" accept="image/*" class="pic-input" />
-          <div class="pic-preview"></div>
-        </label>
-      </div>
-    </section>
-
-    <section class="music card">
-      <h2>Music</h2>
-      <p class="muted">Embed tracks, link to playlists, or drop audio files.</p>
-      <div class="music-list">
-        <div class="music-item">
-          <div class="track-meta">Track title — Artist</div>
-          <audio controls preload="none">
-            <source src="" />
-            Your browser does not support the audio element.
-          </audio>
+      <header class="top">
+        <div class="brand">
+          <div class="logo">♡</div>
+          <div class="title">Your Name</div>
         </div>
-        <div class="music-item">
-          <div class="track-meta">Another track</div>
-          <audio controls preload="none">
-            <source src="" />
-          </audio>
-        </div>
-      </div>
-    </section>
+        <nav class="nav">
+          <a href="#music">Music</a>
+          <a href="#code">Engineering</a>
+          <a href="#bio">Bio</a>
+        </nav>
+      </header>
 
-    <section class="engineering card">
-      <h2>Engineering / Coding</h2>
-      <p class="muted">Showcase projects, links to repos, and short code samples.</p>
-      <div class="projects">
-        <article class="project">
-          <h3>Project Name</h3>
-          <p class="project-desc">Short description of the project and your role.</p>
-          <pre class="code-sample">// Paste a short code sample here</pre>
-          <p><a href="#">Repository link</a> · <a href="#">Live demo</a></p>
-        </article>
+      <main class="container">
+        <section class="hero">
+          <div class="hero-bg">MELT</div>
+          <div class="hero-inner">
+            <div class="profile-card">
+              <label class="avatar" tabindex="0">
+                <input class="avatar-input" type="file" accept="image/*" />
+                <div class="avatar-preview" aria-hidden="true"></div>
+                <div class="avatar-hint">+</div>
+              </label>
+              <div class="profile-meta">
+                <h1 class="name">Your Name</h1>
+                <p class="tag">Violin • Songwriting • Maker</p>
+                <p id="bio" class="bio">Tell visitors a sweet, short bio—who you are, what you play, and what you love to build.</p>
+                <div class="buttons">
+                  <button class="btn">Listen</button>
+                  <button class="btn outlined">Contact</button>
+                </div>
+              </div>
+            </div>
 
-        <article class="project">
-          <h3>Another Project</h3>
-          <p class="project-desc">Short description.</p>
-          <pre class="code-sample">// Example: hello world</pre>
-          <p><a href="#">Repository link</a></p>
-        </article>
-      </div>
-    </section>
-  </main>
+            <aside class="hero-side">
+              <div class="feature card">
+                <h3>Featured Track</h3>
+                <div class="track">Violin Sketch — <em>Untitled</em></div>
+                <audio controls preload="none" class="audio-ctrl">
+                  <source src="" />
+                </audio>
+              </div>
+              <div class="feature card">
+                <h3>Quick Links</h3>
+                <a class="link" href="#music">My Music</a>
+                <a class="link" href="#code">Projects</a>
+              </div>
+            </aside>
+          </div>
+        </section>
 
-  <footer class="site-footer">
-    <small>Made by you — customize this template.</small>
-  </footer>
-  </div>
+        <section id="music" class="section">
+          <h2 class="section-title">Music</h2>
+          <div class="music-grid">
+            <div class="music-card card">
+              <h3>Violin / Strings</h3>
+              <p class="muted">Sheet snippets, recordings, and rehearsals.</p>
+              <input type="file" accept="audio/*" class="audio-upload" />
+            </div>
 
-  <script>
-    // Simple image preview for the profile avatar and gallery slots
-    function readAndPreview(file, target) {
-      const reader = new FileReader();
-      reader.onload = e => {
-        target.style.backgroundImage = `url('${e.target.result}')`;
-        target.textContent = '';
-      };
-      reader.readAsDataURL(file);
-    }
+            <div class="music-card card">
+              <h3>Songwriting</h3>
+              <p class="muted">Lyric notes, stems, and demos.</p>
+              <textarea class="notes" placeholder="Sketch ideas..."/></textarea>
+            </div>
 
-    document.querySelectorAll('.image-input').forEach(input => {
-      input.addEventListener('change', e => {
-        const file = e.target.files[0];
-        const preview = e.target.closest('.avatar-placeholder').querySelector('.avatar-preview');
-        if (file) readAndPreview(file, preview);
-      });
-    });
+            <div class="music-card card">
+              <h3>Spotify / Embed</h3>
+              <p class="muted">Paste a Spotify embed URL (or track URI) to show a player.</p>
+              <input id="spotifyUrl" type="text" placeholder="https://open.spotify.com/embed/..." />
+              <button id="embedBtn" class="btn">Embed</button>
+              <div id="spotifyEmbed" class="spotify-embed"></div>
+            </div>
+          </div>
+        </section>
 
-    document.querySelectorAll('.pic-input').forEach(input => {
-      input.addEventListener('change', e => {
-        const file = e.target.files[0];
-        const preview = e.target.closest('.pic-slot').querySelector('.pic-preview');
-        if (file) readAndPreview(file, preview);
-      });
-    });
-    // small floating hearts for click feedback
-    document.querySelectorAll('.decor.heart').forEach(h => {
-      h.addEventListener('click', () => {
-        h.classList.toggle('pop');
-      });
-    });
-  </script>
+        <section id="code" class="section">
+          <h2 class="section-title">Engineering &amp; Coding</h2>
+          <div class="projects">
+            <article class="project card">
+              <h3>Project Title</h3>
+              <p class="muted">Short description and tech stack.</p>
+              <pre class="code">// small example
+console.log('hello world')</pre>
+              <p><a href="#">Repository</a> · <a href="#">Live</a></p>
+            </article>
 
-  <!-- Cute bear mascot (inline SVG) -->
-  <div class="cute-bear" aria-hidden="true">
-    <svg viewBox="0 0 200 200" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
-      <g class="bear-body" transform="translate(20,10)">
-        <ellipse cx="80" cy="90" rx="60" ry="60" fill="#fff" stroke="#222" stroke-width="2" />
-        <circle cx="48" cy="40" r="20" fill="#fff" stroke="#222" stroke-width="2" />
-        <circle cx="112" cy="40" r="20" fill="#fff" stroke="#222" stroke-width="2" />
-        <circle cx="63" cy="36" r="3" fill="#222" />
-        <circle cx="97" cy="36" r="3" fill="#222" />
-        <path class="bear-mouth" d="M70 52 q10 12 20 0" fill="transparent" stroke="#222" stroke-width="2"
-          stroke-linecap="round" />
-        <!-- arm (thumbs up) -->
-        <g class="arm" transform="translate(115,85)">
-          <rect x="0" y="0" width="18" height="36" rx="8" fill="#fff" stroke="#222" stroke-width="2" />
-          <circle class="thumb" cx="18" cy="6" r="6" fill="#fff" stroke="#222" stroke-width="2" />
-        </g>
-      </g>
-    </svg>
-  </div>
-</body>
+            <article class="project card">
+              <h3>Another Project</h3>
+              <p class="muted">Short description.</p>
+            </article>
+          </div>
+        </section>
 
+        <section class="gallery section">
+          <h2 class="section-title">Gallery</h2>
+          <div class="gallery-grid">
+            <label class="pic-slot">
+              <input class="pic-input" type="file" accept="image/*" />
+              <div class="pic-preview"></div>
+            </label>
+            <label class="pic-slot">
+              <input class="pic-input" type="file" accept="image/*" />
+              <div class="pic-preview"></div>
+            </label>
+            <label class="pic-slot">
+              <input class="pic-input" type="file" accept="image/*" />
+              <div class="pic-preview"></div>
+            </label>
+            <label class="pic-slot">
+              <input class="pic-input" type="file" accept="image/*" />
+              <div class="pic-preview"></div>
+            </label>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer card">
+        <small>Made with ♡ — customize this template.</small>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

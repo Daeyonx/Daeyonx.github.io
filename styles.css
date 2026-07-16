@@ -1,4 +1,354 @@
 :root {
+    --bg: #fbfafb;
+    --card: #ffffff;
+    --muted: #8c8c8c;
+    --accent: #ff7aa2;
+    --accent-2: #ffd7e3;
+    --radius: 18px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Poppins, system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: #111
+}
+
+.site {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 18px;
+    position: relative
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-2), #fff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Pacifico;
+    font-size: 20px
+}
+
+.title {
+    font-weight: 600
+}
+
+.nav a {
+    margin-left: 12px;
+    color: var(--muted);
+    text-decoration: none
+}
+
+.hero {
+    position: relative;
+    padding: 22px;
+    border-radius: var(--radius);
+    overflow: visible
+}
+
+.hero-bg {
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    font-weight: 900;
+    font-size: 96px;
+    color: rgba(0, 0, 0, 0.04);
+    letter-spacing: 6px;
+    pointer-events: none
+}
+
+.hero-inner {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start
+}
+
+.profile-card {
+    display: flex;
+    gap: 18px;
+    background: linear-gradient(180deg, #fff, #fcfbfb);
+    padding: 18px;
+    border-radius: 14px;
+    align-items: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04)
+}
+
+.avatar {
+    position: relative;
+    display: block;
+    width: 160px;
+    height: 160px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer
+}
+
+.avatar input {
+    display: none
+}
+
+.avatar-preview {
+    background: #f4f4f6;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px
+}
+
+.avatar-hint {
+    position: absolute;
+    right: 8px;
+    bottom: 6px;
+    background: var(--accent);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700
+}
+
+.profile-meta .name {
+    margin: 0;
+    font-size: 22px
+}
+
+.tag {
+    color: var(--muted);
+    margin: 6px 0
+}
+
+.bio {
+    color: var(--muted);
+    max-width: 46ch
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    background: #fff;
+    cursor: pointer
+}
+
+.btn.outlined {
+    background: transparent;
+    border: 1px solid #e6e6e6
+}
+
+.hero-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.card {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 12px
+}
+
+.feature h3 {
+    margin-top: 0
+}
+
+.audio-ctrl {
+    width: 100%;
+    margin-top: 8px
+}
+
+.section {
+    margin-top: 20px
+}
+
+.section-title {
+    font-size: 18px;
+    margin: 0 0 12px 0
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px
+}
+
+.music-card .notes {
+    width: 100%;
+    height: 90px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    padding: 10px
+}
+
+.spotify-embed iframe {
+    width: 100%;
+    border-radius: 10px;
+    border: none
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px
+}
+
+.code {
+    background: #0b0b0b;
+    color: #dff0d8;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: monospace
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 8px
+}
+
+.pic-slot {
+    position: relative;
+    min-height: 140px;
+    border-radius: 12px;
+    border: 2px dashed #f0e6ea;
+    background: #fff;
+    overflow: hidden;
+    cursor: pointer;
+    display: block
+}
+
+.pic-slot input {
+    display: none
+}
+
+.pic-preview {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 34px
+}
+
+.pic-slot.dragover {
+    box-shadow: 0 12px 30px rgba(255, 122, 162, 0.12);
+    transform: translateY(-6px)
+}
+
+.pic-preview:empty::before {
+    content: '+';
+    font-weight: 800
+}
+
+.footer {
+    margin-top: 22px;
+    text-align: center;
+    color: var(--muted);
+    padding: 12px
+}
+
+.frame-decor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none
+}
+
+.frame-decor .corner {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    opacity: .95
+}
+
+.frame-decor .tl {
+    left: -18px;
+    top: -18px
+}
+
+.frame-decor .tr {
+    right: -18px;
+    top: -18px;
+    transform: scaleX(-1)
+}
+
+.frame-decor .bl {
+    left: -18px;
+    bottom: -18px;
+    transform: scaleY(-1)
+}
+
+.frame-decor .br {
+    right: -18px;
+    bottom: -18px;
+    transform: scale(-1)
+}
+
+@media (max-width:980px) {
+    .music-grid {
+        grid-template-columns: 1fr
+    }
+
+    .projects {
+        grid-template-columns: 1fr
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .hero-inner {
+        flex-direction: column
+    }
+
+    .avatar {
+        width: 120px;
+        height: 120px
+    }
+
+    .hero-bg {
+        font-size: 56px
+    }
+}
+
+:root {
     --bg: #efefef;
     --card: #ffffff;
     --muted: #666;
