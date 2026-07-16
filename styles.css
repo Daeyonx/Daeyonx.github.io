@@ -101,8 +101,8 @@ body {
 .avatar {
     position: relative;
     display: block;
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: 220px;
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer
@@ -237,17 +237,36 @@ body {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-top: 8px
+    /* larger photos: use two columns */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 12px
 }
 
-.photo-gallery .gallery-row, .image-gallery {display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
-.photo-gallery h4{font-size:13px;margin:0;color:var(--muted)}
+.photo-gallery .gallery-row,
+.image-gallery {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap
+}
+
+.photo-gallery h4 {
+    font-size: 13px;
+    margin: 0;
+    color: var(--muted)
+}
+
+.photo-gallery .gallery-row .pic-slot,
+.image-gallery .pic-slot {
+    flex: 1 1 calc(50% - 12px);
+    min-width: 160px
+}
 
 .pic-slot {
     position: relative;
-    min-height: 140px;
+    /* increased height for large group photos / project images */
+    min-height: 260px;
     border-radius: 12px;
     border: 2px dashed #f0e6ea;
     background: #fff;
@@ -269,7 +288,7 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--accent);
-    font-size: 34px
+    font-size: 42px;
 }
 
 .pic-slot.dragover {
@@ -337,7 +356,7 @@ body {
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: 1fr
     }
 
     .hero-inner {
@@ -345,8 +364,8 @@ body {
     }
 
     .avatar {
-        width: 120px;
-        height: 120px
+        width: 160px;
+        height: 160px
     }
 
     .hero-bg {
