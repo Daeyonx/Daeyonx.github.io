@@ -5,7 +5,7 @@
     --accent: #ff7aa2;
     --accent-2: #ffd7e3;
     --radius: 18px;
-    --image-height: 260px;
+    --image-height: 130px;
     --avatar-size: 360px;
 }
 
@@ -88,10 +88,21 @@ body {
 }
 
 @keyframes heart-pop {
-    0% { transform: scale(1) }
-    20% { transform: scale(1.35) }
-    40% { transform: scale(.95) }
-    100% { transform: scale(1) }
+    0% {
+        transform: scale(1)
+    }
+
+    20% {
+        transform: scale(1.35)
+    }
+
+    40% {
+        transform: scale(.95)
+    }
+
+    100% {
+        transform: scale(1)
+    }
 }
 
 /* ---------- Hero / profile ---------- */
@@ -491,10 +502,28 @@ body {
     opacity: .95
 }
 
-.frame-decor .tl { left: -18px; top: -18px; }
-.frame-decor .tr { right: -18px; top: -18px; transform: scaleX(-1) }
-.frame-decor .bl { left: -18px; bottom: -18px; transform: scaleY(-1) }
-.frame-decor .br { right: -18px; bottom: -18px; transform: scale(-1) }
+.frame-decor .tl {
+    left: -18px;
+    top: -18px;
+}
+
+.frame-decor .tr {
+    right: -18px;
+    top: -18px;
+    transform: scaleX(-1)
+}
+
+.frame-decor .bl {
+    left: -18px;
+    bottom: -18px;
+    transform: scaleY(-1)
+}
+
+.frame-decor .br {
+    right: -18px;
+    bottom: -18px;
+    transform: scale(-1)
+}
 
 /* ---------- Footer ---------- */
 
