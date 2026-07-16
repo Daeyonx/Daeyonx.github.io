@@ -5,6 +5,8 @@
     --accent: #ff7aa2;
     --accent-2: #ffd7e3;
     --radius: 18px;
+    --image-height: 520px;
+    --avatar-size: 360px;
 }
 
 * {
@@ -101,8 +103,8 @@ body {
 .avatar {
     position: relative;
     display: block;
-    width: 360px;
-    height: 360px;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer
@@ -263,7 +265,7 @@ body {
 
 .pic-slot {
     position: relative;
-    min-height: 520px;
+    min-height: var(--image-height);
     border-radius: 18px;
     border: 2px dashed #f0e6ea;
     background: #fff;
