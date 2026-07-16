@@ -27,21 +27,6 @@ document.querySelectorAll('.pic-slot').forEach(slot => {
     slot.addEventListener('drop', e => { const f = e.dataTransfer.files[0]; if (f && f.type.startsWith('image/')) { try { const dt = new DataTransfer(); dt.items.add(f); input.files = dt.files; } catch (_) { } readAndPreview(f, preview); } });
 });
 
-// image size slider helper
-const imageSizeSlider = document.getElementById('imageSizeSlider');
-const sizeValue = document.getElementById('sizeValue');
-if (imageSizeSlider && sizeValue) {
-    const root = document.documentElement;
-    function updateImageSize() {
-        const value = imageSizeSlider.value;
-        root.style.setProperty('--image-height', `${value}px`);
-        root.style.setProperty('--avatar-size', `${Math.round(value * 0.7)}px`);
-        sizeValue.textContent = `${value}px`;
-    }
-    updateImageSize();
-    imageSizeSlider.addEventListener('input', updateImageSize);
-}
-
 // Spotify embed helper
 const embedBtn = document.getElementById('embedBtn');
 if (embedBtn) {
