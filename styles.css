@@ -407,80 +407,78 @@ input[type=file] {
     }
 }
 
-/* Cute bear positioning + animation */
-.cute-bear {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 120;
+/* Picture slot dragover + plus sign */
+.pic-slot {
+    transition: box-shadow .18s ease, transform .12s ease
+}
+
+.pic-slot.dragover {
+    box-shadow: 0 12px 30px rgba(255, 100, 140, 0.12);
+    transform: translateY(-4px)
+}
+
+.pic-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    font-size: 28px
+}
+
+.pic-preview:empty::before {
+    content: '+';
+    color: #eaa;
+    font-weight: 700
+}
+
+/* Decorative frame corners */
+.page {
+    position: relative
+}
+
+.frame-decor {
+    position: absolute;
+    inset: 0;
     pointer-events: none
 }
 
-.cute-bear svg {
-    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .08))
+.frame-decor .corner {
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    opacity: .95
 }
 
-.cute-bear .bear-body {
-    transform-origin: center;
-    animation: bear-bob 3s ease-in-out infinite
+.frame-decor .tl {
+    left: -18px;
+    top: -18px;
 }
 
-@keyframes bear-bob {
-    0% {
-        transform: translateY(0)
-    }
-
-    50% {
-        transform: translateY(-6px)
-    }
-
-    100% {
-        transform: translateY(0)
-    }
+.frame-decor .tr {
+    right: -18px;
+    top: -18px;
+    transform: scaleX(-1)
 }
 
-/* arm thumbs-up animation */
-.cute-bear .arm {
-    transform-origin: 8px 18px;
-    animation: thumbs 3s ease-in-out infinite
+.frame-decor .bl {
+    left: -18px;
+    bottom: -18px;
+    transform: scaleY(-1)
 }
 
-@keyframes thumbs {
-    0% {
-        transform: rotate(0)
-    }
-
-    20% {
-        transform: rotate(-18deg)
-    }
-
-    40% {
-        transform: rotate(6deg)
-    }
-
-    60% {
-        transform: rotate(-10deg)
-    }
-
-    100% {
-        transform: rotate(0)
-    }
+.frame-decor .br {
+    right: -18px;
+    bottom: -18px;
+    transform: scale(-1)
 }
 
-/* mouth smile pulse */
-.cute-bear .bear-mouth {
-    transition: stroke-width .2s ease
-}
-
-.cute-bear:hover .bear-mouth {
-    stroke-width: 3
-}
-
-/* small responsive tweak for mascot on tiny screens */
 @media(max-width:420px) {
-    .cute-bear {
-        right: 8px;
-        bottom: 8px;
-        transform: scale(.85)
+    .frame-decor .corner {
+        width: 54px;
+        height: 54px;
+        opacity: .7
     }
 }
