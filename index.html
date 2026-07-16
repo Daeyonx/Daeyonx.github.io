@@ -1,13 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>YOUR-NAME's Website</title>
-  </head>
-  <body>
-    <h1>Hello, world! I'm Joyce :). 👋</h1>
-    <p>This is my corner of the internet.</p>
-    <p>Built at the CS@Mines summer program. Check back this afternoon, it's about to get way better.</p>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="page">
+    <header class="site-header">
+      <h1 class="site-title">Your Name</h1>
+      <p class="tagline">Short tagline or profession</p>
+    </header>
+
+    <main class="layout">
+      <section class="bio card">
+        <h2>Bio</h2>
+        <p class="bio-text">Write a short bio about yourself here. This is a place to introduce who you are, what you
+          do, and what you're passionate about.</p>
+        <div class="avatar-placeholder">
+          <label class="image-drop">
+            <span>Drop or select a profile image</span>
+            <input type="file" accept="image/*" class="image-input" />
+          </label>
+          <div class="avatar-preview" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="gallery card">
+        <h2>Pictures</h2>
+        <p class="muted">Add photos or artwork here.</p>
+        <div class="pictures-grid" id="picturesGrid">
+          <label class="pic-slot">
+            <input type="file" accept="image/*" class="pic-input" />
+            <div class="pic-preview">+ Add</div>
+          </label>
+          <label class="pic-slot">
+            <input type="file" accept="image/*" class="pic-input" />
+            <div class="pic-preview">+ Add</div>
+          </label>
+          <label class="pic-slot">
+            <input type="file" accept="image/*" class="pic-input" />
+            <div class="pic-preview">+ Add</div>
+          </label>
+          <label class="pic-slot">
+            <input type="file" accept="image/*" class="pic-input" />
+            <div class="pic-preview">+ Add</div>
+          </label>
+        </div>
+      </section>
+
+      <section class="music card">
+        <h2>Music</h2>
+        <p class="muted">Embed tracks, link to playlists, or drop audio files.</p>
+        <div class="music-list">
+          <div class="music-item">
+            <div class="track-meta">Track title — Artist</div>
+            <audio controls preload="none">
+              <source src="" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+          <div class="music-item">
+            <div class="track-meta">Another track</div>
+            <audio controls preload="none">
+              <source src="" />
+            </audio>
+          </div>
+        </div>
+      </section>
+
+      <section class="engineering card">
+        <h2>Engineering / Coding</h2>
+        <p class="muted">Showcase projects, links to repos, and short code samples.</p>
+        <div class="projects">
+          <article class="project">
+            <h3>Project Name</h3>
+            <p class="project-desc">Short description of the project and your role.</p>
+            <pre class="code-sample">// Paste a short code sample here</pre>
+            <p><a href="#">Repository link</a> · <a href="#">Live demo</a></p>
+          </article>
+
+          <article class="project">
+            <h3>Another Project</h3>
+            <p class="project-desc">Short description.</p>
+            <pre class="code-sample">// Example: hello world</pre>
+            <p><a href="#">Repository link</a></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>Made by you — customize this template.</small>
+    </footer>
+  </div>
+
+  <script>
+    // Simple image preview for the profile avatar and gallery slots
+    function readAndPreview(file, target) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        target.style.backgroundImage = `url('${e.target.result}')`;
+        target.textContent = '';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    document.querySelectorAll('.image-input').forEach(input => {
+      input.addEventListener('change', e => {
+        const file = e.target.files[0];
+        const preview = e.target.closest('.avatar-placeholder').querySelector('.avatar-preview');
+        if (file) readAndPreview(file, preview);
+      });
+    });
+
+    document.querySelectorAll('.pic-input').forEach(input => {
+      input.addEventListener('change', e => {
+        const file = e.target.files[0];
+        const preview = e.target.closest('.pic-slot').querySelector('.pic-preview');
+        if (file) readAndPreview(file, preview);
+      });
+    });
+  </script>
+</body>
+
 </html>
