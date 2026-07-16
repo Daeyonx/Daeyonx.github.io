@@ -5,7 +5,7 @@
     --accent: #ff7aa2;
     --accent-2: #ffd7e3;
     --radius: 18px;
-    --image-height: 130px;
+    --image-height: 220px;
     --avatar-size: 360px;
 }
 
@@ -274,7 +274,7 @@ body {
 
 .music-card .notes {
     width: 100%;
-    height: 45px;
+    height: 90px;
     border-radius: 10px;
     border: 1px solid #eee;
     padding: 10px
@@ -556,21 +556,6 @@ body {
 
 .link:hover {
     text-decoration: underline
-}
-
-.size-control {
-    display: flex;
-    flex-direction: column;
-    gap: 6px
-}
-
-.size-control input[type="range"] {
-    width: 100%
-}
-
-.size-label {
-    font-size: 13px;
-    color: var(--muted)
 }
 
 /* ---------- Misc / accessibility ---------- */
