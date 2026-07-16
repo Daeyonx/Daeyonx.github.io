@@ -371,8 +371,8 @@ body {
     }
 
     .avatar {
-        width: 160px;
-        height: 160px
+        width: 220px;
+        height: 220px
     }
 
     .hero-bg {
@@ -380,146 +380,8 @@ body {
     }
 }
 
-:root {
-    --bg: #efefef;
-    --card: #ffffff;
-    --muted: #666;
-    --accent: #222;
-}
-
-* {
-    box-sizing: border-box
-}
-
-html,
-body {
-    height: 100%;
-    margin: 0;
-    font-family: Inter, system-ui, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--accent)
-}
-
-.page {
-    max-width: 1100px;
-    margin: 28px auto;
-    padding: 18px
-}
-
-.site-header {
-    display: flex;
-    align-items: flex-end;
-    gap: 12px
-}
-
-.site-title {
-    margin: 0;
-    font-size: 28px
-}
-
-.tagline {
-    margin: 0;
-    color: var(--muted)
-}
-
-.layout {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 18px;
-    margin-top: 18px
-}
-
-.card {
-    background: var(--card);
-    padding: 14px;
-    border-radius: 6px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, .08)
-}
-
-/* Hero and Showcase styles */
-.hero {
-    position: relative;
-    overflow: visible;
-    padding: 28px 20px;
-    border-radius: 18px
-}
-
-.hero-bg {
-    position: absolute;
-    left: 50%;
-    top: 8px;
-    transform: translateX(-50%);
-    font-weight: 900;
-    font-size: 96px;
-    color: rgba(0, 0, 0, 0.06);
-    letter-spacing: 6px;
-    pointer-events: none
-}
-
-.hero-inner {
-    display: flex;
-    gap: 20px;
-    align-items: stretch;
-    position: relative
-}
-
-.hero-left {
-    flex: 0 0 460px
-}
-
-.profile-card {
-    display: flex;
-    gap: 18px;
-    background: linear-gradient(180deg, #fff, #fbfbfb);
-    padding: 18px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(10, 10, 10, 0.06);
-    align-items: center
-}
-
-.profile-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 12px;
-    background: #eee;
-    background-size: cover;
-    background-position: center;
-    border: 6px solid #fff;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06)
-}
-
-.profile-info {
-    flex: 1
-}
-
-.name {
-    margin: 0;
-    font-size: 20px
-}
-
-.role {
-    margin: 4px 0;
-    color: var(--muted)
-}
-
-.bio-small {
-    font-size: 14px;
-    color: var(--muted);
-    margin: 8px 0
-}
-
-.profile-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 8px
-}
-
-.btn {
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background: #fff;
-    cursor: pointer
+background: #fff;
+cursor: pointer
 }
 
 .btn.primary {
